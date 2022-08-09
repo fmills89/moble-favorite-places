@@ -1,12 +1,10 @@
 import { StyleSheet } from 'react-native';
+import PlacesList from '../components/Places/PlacesList';
 
 function AllPlaces() {
-  <Text></Text>;
+  return <PlacesList />;
 }
 
 export default AllPlaces;
 
-const styles =
-  StyleSheet.create(
-    {}
-  );
+const styles = StyleSheet.create({});
