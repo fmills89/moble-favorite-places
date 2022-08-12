@@ -1,4 +1,4 @@
-import getEnvVars from '../enviroment';
+import getEnvVars from '../.env/enviroment';
 
 const { apiUrl } = getEnvVars();
 
