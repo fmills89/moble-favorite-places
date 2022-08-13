@@ -7,7 +7,7 @@ import {
 } from 'expo-location';
 import { useState, useEffect } from 'react';
 import { Colors } from '../../constants/colors';
-import { getMapPreview } from '../../util/location';
+import { getAddress, getMapPreview } from '../../util/location';
 import {
   useNavigation,
   useRoute,
@@ -35,7 +35,20 @@ function LocationPicker({ onPickLocation }) {
   }, [route, isFocused]);
 
   useEffect(() => {
-    onPickLocation(pickedLocation);
+    // helper async function because useEffect does not want a
+    // function that returns a promise therefor using helper
+    async function handleLocation() {
+      if (pickedLocation) {
+        const address = await getAddress(
+          pickedLocation.lat,
+          pickedLocation.lng
+        );
+        // forwards picked location as a new object and merge in address
+        // return both to place form
+        onPickLocation({ ...pickedLocation, address: address });
+      }
+    }
+    handleLocation();
   }, [pickedLocation, onPickLocation]);
 
   async function verifyPermissions() {

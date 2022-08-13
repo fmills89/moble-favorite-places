@@ -23,9 +23,7 @@ function PlaceForm() {
     setPickedLocation(location);
   }, []);
 
-  function savePlaceHandler() {
-    console.log(enteredTitle, selectedImage, pickedLocation);
-  }
+  function savePlaceHandler() {}
 
   return (
     <ScrollView style={styles.form}>
