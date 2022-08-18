@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AllPlaces from './screens/AllPlaces';
 import AddPlace from './screens/AddPlace';
+import PlaceDetails from './screens/PlaceDetails';
 import IconButton from './components/ui/IconButton';
 import Map from './screens/Map';
 
@@ -70,6 +71,7 @@ export default function App() {
             }}
           />
           <Stack.Screen name="Map" component={Map} />
+          <Stack.Screen name="PlaceDetails" component={PlaceDetails} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

@@ -19,6 +19,7 @@ function AllPlaces({ route }) {
       // setLoadedPlaces(curPlaces => [...curPlaces, route.params.place]);
     }
   }, [isFocused]);
+
   return <PlacesList places={loadedPlaces} />;
 }
 
