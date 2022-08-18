@@ -109,7 +109,21 @@ export function fetchPlaceDetails(id) {
         'SELECT * FROM places WHERE id = ?',
         [id],
         (_, result) => {
-          resolve(result.rows._array[0]);
+          const dbPlace = result.rows._array[0];
+          // tranforming place data we get from database (which is diff) into
+          // object that has shape defined by our place blueprint
+          // fixing undefined error in place tails map
+          const place = new Place(
+            dbPlace.title,
+            dbPlace.imageUri,
+            {
+              lat: dbPlace.lat,
+              lng: dbPlace.lng,
+              address: dbPlace.address,
+            },
+            dbPlace.id
+          );
+          resolve(place);
         },
         (_, error) => {
           reject(error);
